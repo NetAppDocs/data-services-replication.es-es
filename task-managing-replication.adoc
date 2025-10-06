@@ -36,7 +36,7 @@ La siguiente tabla describe las acciones disponibles:
 | Información | Muestra detalles sobre la relación de volumen: información de transferencia, información de la última transferencia, detalles sobre el volumen e información sobre la política de protección asignada a la relación. 
 
 
-| Romper | Rompe la relación entre los volúmenes de origen y destino, y activa el volumen de destino para el acceso a los datos. Esta opción se utiliza normalmente cuando el volumen de origen no puede servir datos debido a eventos como corrupción de datos, eliminación accidental o un estado fuera de línea.https://docs.netapp.com/us-en/ontap-sm-classic/volume-disaster-recovery/index.html["Aprenda a configurar un volumen de destino para el acceso a datos y reactivar un volumen de origen en la documentación de ONTAP"^] 
+| Romper | Rompe la relación entre los volúmenes de origen y destino, y activa el volumen de destino para el acceso a los datos.  Esta opción se utiliza normalmente cuando el volumen de origen no puede servir datos debido a eventos como corrupción de datos, eliminación accidental o un estado fuera de línea.https://docs.netapp.com/us-en/ontap-sm-classic/volume-disaster-recovery/index.html["Aprenda a configurar un volumen de destino para el acceso a datos y reactivar un volumen de origen en la documentación de ONTAP"^] 
 
 
 | Resincronizar  a| 
@@ -49,7 +49,7 @@ Aprenda a realizar una resincronización inversa, que resincroniza los datos del
 
 
 
-| Resincronización inversa | Invierte los roles de los volúmenes de origen y destino. El contenido del volumen de origen original se sobrescribe con el contenido del volumen de destino. Esto es útil cuando desea reactivar un volumen de origen que se desconectó. No se conservan los datos escritos en el volumen de origen original entre la última replicación de datos y el momento en que se deshabilitó el volumen de origen. 
+| Resincronización inversa | Invierte los roles de los volúmenes de origen y destino.  El contenido del volumen de origen original se sobrescribe con el contenido del volumen de destino.  Esto es útil cuando desea reactivar un volumen de origen que se desconectó.  No se conservan los datos escritos en el volumen de origen original entre la última replicación de datos y el momento en que se deshabilitó el volumen de origen. 
 
 
 | Editar horario | Le permite elegir una programación diferente para la replicación de datos. 
@@ -61,7 +61,7 @@ Aprenda a realizar una resincronización inversa, que resincroniza los datos del
 | Actualizar | Inicia una transferencia incremental para actualizar el volumen de destino. 
 
 
-| Borrar | Elimina la relación de protección de datos entre los volúmenes de origen y destino, lo que significa que ya no se produce la replicación de datos entre los volúmenes. Esta acción no activa el volumen de destino para el acceso a los datos. 
+| Borrar | Elimina la relación de protección de datos entre los volúmenes de origen y destino, lo que significa que ya no se produce la replicación de datos entre los volúmenes.  Esta acción no activa el volumen de destino para el acceso a los datos. 
 |===
 
 

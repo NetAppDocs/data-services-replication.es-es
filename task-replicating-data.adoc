@@ -54,7 +54,7 @@ Requisitos específicos de los clústeres ONTAP::
 +
 --
 * Se debe instalar una licencia activa de SnapMirror .
-* Si el clúster está en sus instalaciones, debe tener una conexión desde su red corporativa a su red virtual en la nube. Normalmente se trata de una conexión VPN.
+* Si el clúster está en sus instalaciones, debe tener una conexión desde su red corporativa a su red virtual en la nube.  Normalmente se trata de una conexión VPN.
 * Los clústeres ONTAP deben cumplir requisitos adicionales de subred, puerto, firewall y clúster.
 +
 https://docs.netapp.com/us-en/ontap/peering/prerequisites-cluster-peering-reference.html#connectivity-requirements["Consulte los requisitos previos para el peering de clústeres en la documentación de ONTAP"^]
