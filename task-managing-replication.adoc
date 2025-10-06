@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: task-managing-replication.html 
+keywords: replication policy, policy, replication, replicating, snapmirror, snapvault, data replication, source, destination, schedule, relationship, break, resync, max transfer, maximum transfer rate, rate, transfer rate, reverse resync, status, replication status, disaster recovery, DR, archive, archiving, retention 
+summary: Después de configurar la replicación de datos entre dos sistemas, puede administrar la programación y la relación de replicación de datos desde NetApp Replication. 
+---
+= Administrar la replicación de datos en NetApp Replication
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Después de configurar la replicación de datos entre dos sistemas, puede administrar la programación y la relación de replicación de datos desde NetApp Replication.
+
+.Pasos
+. link:task-login-replication.html["Inicie sesión en NetApp Replication"] .
+. Revise el estado de las relaciones de replicación de datos para verificar que sean correctas.
++
+
+NOTE: Si el estado de una relación está inactivo y el estado del espejo no está inicializado, debe inicializar la relación desde el sistema de destino para que la replicación de datos se realice según el cronograma definido.  Puede inicializar la relación mediante el Administrador del sistema o la interfaz de línea de comandos (CLI).  Estos estados pueden aparecer cuando el sistema de destino falla y luego vuelve a estar en línea.
+
+. Seleccione el menú de acciones para una relación de volumen y elija una de las acciones disponibles.
++
+La siguiente tabla describe las acciones disponibles:
+
++
+[cols="15,85"]
+|===
+| Acción | Descripción 
+
+
+| Información | Muestra detalles sobre la relación de volumen: información de transferencia, información de la última transferencia, detalles sobre el volumen e información sobre la política de protección asignada a la relación. 
+
+
+| Romper | Rompe la relación entre los volúmenes de origen y destino, y activa el volumen de destino para el acceso a los datos. Esta opción se utiliza normalmente cuando el volumen de origen no puede servir datos debido a eventos como corrupción de datos, eliminación accidental o un estado fuera de línea.https://docs.netapp.com/us-en/ontap-sm-classic/volume-disaster-recovery/index.html["Aprenda a configurar un volumen de destino para el acceso a datos y reactivar un volumen de origen en la documentación de ONTAP"^] 
+
+
+| Resincronizar  a| 
+Restablece una relación rota entre volúmenes y reanuda la replicación de datos según la programación definida.
+
+
+NOTE: Al resincronizar los volúmenes, el contenido del volumen de destino se sobrescribe con el contenido del volumen de origen.
+
+Aprenda a realizar una resincronización inversa, que resincroniza los datos del volumen de destino al volumen de origen, vaya a https://docs.netapp.com/us-en/ontap-sm-classic/volume-disaster-recovery/index.html["Documentación de ONTAP"^] .
+
+
+
+| Resincronización inversa | Invierte los roles de los volúmenes de origen y destino. El contenido del volumen de origen original se sobrescribe con el contenido del volumen de destino. Esto es útil cuando desea reactivar un volumen de origen que se desconectó. No se conservan los datos escritos en el volumen de origen original entre la última replicación de datos y el momento en que se deshabilitó el volumen de origen. 
+
+
+| Editar horario | Le permite elegir una programación diferente para la replicación de datos. 
+
+
+| Editar la velocidad máxima de transferencia | Le permite editar la velocidad máxima (en kilobytes por segundo) a la que se pueden transferir datos. 
+
+
+| Actualizar | Inicia una transferencia incremental para actualizar el volumen de destino. 
+
+
+| Borrar | Elimina la relación de protección de datos entre los volúmenes de origen y destino, lo que significa que ya no se produce la replicación de datos entre los volúmenes. Esta acción no activa el volumen de destino para el acceso a los datos. 
+|===
+
+
+.Resultado
+Después de seleccionar una acción, NetApp Replication actualiza la relación o la programación.

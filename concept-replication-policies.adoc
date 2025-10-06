@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: concept-replication-policies.html 
+keywords: replication policy, policy, replication, replicating, snapmirror, snapvault, data replication, disaster recovery, DR 
+summary: Es posible que necesite ayuda para elegir una política de replicación al configurar la replicación de datos en NetApp Console.  Una política de replicación define cómo el sistema de almacenamiento replica datos desde un volumen de origen a un volumen de destino. 
+---
+= Obtenga información sobre las políticas de replicación utilizadas en NetApp Replication
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Es posible que necesite ayuda para elegir una política de replicación al configurar la replicación de datos en NetApp Replication.  Una política de replicación define cómo el sistema de almacenamiento replica datos desde un volumen de origen a un volumen de destino.
+
+
+
+== ¿Qué hacen las políticas de replicación?
+
+El sistema operativo ONTAP crea automáticamente copias de seguridad llamadas copias instantáneas.  Una copia instantánea es una imagen de solo lectura de un volumen que captura el estado del sistema de archivos en un momento determinado.
+
+Cuando se replican datos entre sistemas, se replican copias instantáneas de un volumen de origen a un volumen de destino.  Una política de replicación especifica qué copias de instantáneas se deben replicar desde el volumen de origen al volumen de destino.
+
+
+TIP: Las políticas de replicación también se conocen como políticas de _protección_ porque están impulsadas por las tecnologías SnapMirror y SnapVault , que brindan protección de recuperación ante desastres y respaldo y recuperación de disco a disco.
+
+La siguiente imagen muestra la relación entre las copias instantáneas y las políticas de replicación:
+
+image:diagram_replication_policies.png["Esta ilustración muestra copias de instantáneas en un volumen de origen y una política de replicación que especifica la replicación de todas o de copias de instantáneas específicas del volumen de origen al volumen de destino."]
+
+
+
+== Tipos de políticas de replicación
+
+Hay tres tipos de políticas de replicación:
+
+* Una política _Mirror_ replica copias de instantáneas recién creadas en un volumen de destino.
++
+Puede utilizar estas copias instantáneas para proteger el volumen de origen en preparación para la recuperación ante desastres o para la replicación de datos única.  Puede activar el volumen de destino para el acceso a los datos en cualquier momento.
+
+* Una política de _Copia de seguridad_ replica copias de instantáneas específicas en un volumen de destino y generalmente las conserva durante un período de tiempo más largo que el que conservaría en el volumen de origen.
++
+Puede restaurar datos de estas copias instantáneas cuando se corrompen o se pierden, y conservarlos para cumplir con los estándares y otros fines relacionados con la gobernanza.
+
+* Una política de _Espejo y Copia de Seguridad_ proporciona recuperación ante desastres y retención a largo plazo.
++
+Cada sistema incluye una política de espejo y copia de seguridad predeterminada, que funciona bien en muchas situaciones.  Si descubre que necesita políticas personalizadas, puede crear las suyas propias utilizando el Administrador del sistema.
+
+
+
+Las siguientes imágenes muestran la diferencia entre las políticas de espejo y de respaldo.  Una política de espejo refleja las copias de instantáneas disponibles en el volumen de origen.
+
+image:diagram_replication_snapmirror.png["Esta ilustración muestra copias instantáneas en un volumen de origen y un volumen de destino espejo que refleja el volumen de origen."]
+
+Una política de respaldo generalmente conserva copias instantáneas por más tiempo del que se conservan en el volumen de origen:
+
+image:diagram_replication_snapvault.png["Esta ilustración muestra copias de instantáneas en un volumen de origen y un volumen de destino de copia de seguridad que incluye más copias de instantáneas porque SnapVault conserva copias de instantáneas para retención a largo plazo."]

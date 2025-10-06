@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: concept-backup-policies.html 
+keywords: snapvault, archive, archiving, retention, replication, snapshots, volumes 
+summary: A diferencia de las políticas Mirror, las políticas de Backup SnapVault replican copias de instantáneas específicas en un volumen de destino.  Es importante comprender cómo funcionan las políticas de respaldo si desea utilizar sus propias políticas en lugar de las políticas predeterminadas. 
+---
+= Obtenga información sobre las políticas de respaldo utilizadas en NetApp Replication
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+A diferencia de las políticas de espejo, las políticas de respaldo (SnapVault) replican copias de instantáneas específicas a un volumen de destino mediante NetApp Replication.  Es importante comprender cómo funcionan las políticas de respaldo si desea utilizar sus propias políticas en lugar de las políticas predeterminadas.
+
+
+
+== Comprender la relación entre las etiquetas de copia de instantáneas y las políticas de respaldo
+
+Una política de instantáneas define cómo el sistema crea copias instantáneas de volúmenes.  La política especifica cuándo crear las copias instantáneas, cuántas copias conservar y cómo etiquetarlas.  Por ejemplo, un sistema podría crear una copia instantánea todos los días a las 12:10 a. m., conservar las dos copias más recientes y etiquetarlas como "diarias".
+
+Una política de respaldo incluye reglas que especifican qué copias de instantáneas etiquetadas replicar en un volumen de destino y cuántas copias conservar.  Las etiquetas definidas en una política de respaldo deben coincidir con una o más etiquetas definidas en una política de instantáneas.  De lo contrario, el sistema no podrá replicar ninguna copia instantánea.
+
+Por ejemplo, una política de respaldo que incluye las etiquetas "diario" y "semanal" da como resultado la replicación de copias de instantáneas que incluyen solo esas etiquetas.  No se replican otras copias de instantáneas, como se muestra en la siguiente imagen:
+
+image:diagram_replication_snapvault_policy.png["Esta ilustración muestra una política de instantáneas, un volumen de origen, las copias de instantáneas creadas a partir de la política de instantáneas y luego la replicación de esas copias de instantáneas a un volumen de destino según una política de respaldo, que especifica la replicación de copias de instantáneas con las etiquetas \"diaria\" y \"semanal\""]
+
+
+
+== Políticas predeterminadas y políticas personalizadas
+
+La política de instantáneas predeterminada crea copias de instantáneas cada hora, cada día y cada semana, y conserva seis copias de instantáneas cada hora, dos diarias y dos semanales.
+
+Puede utilizar fácilmente una política de copia de seguridad predeterminada con la política de instantáneas predeterminada.  Las políticas de copia de seguridad predeterminadas replican copias de instantáneas diarias y semanales, conservando siete copias de instantáneas diarias y 52 semanales.
+
+Si crea políticas personalizadas, las etiquetas definidas por esas políticas deben coincidir.  Puede crear políticas personalizadas utilizando el Administrador del sistema.
