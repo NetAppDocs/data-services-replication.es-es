@@ -18,6 +18,7 @@ Con NetApp Replication, replique datos entre sistemas ONTAP eligiendo una replic
 
 
 
+[[step-1-review-data-replication-requirements]]
 == Paso 1: Revisar los requisitos de replicación de datos
 
 Antes de poder replicar datos, debe confirmar que se cumplan los requisitos específicos para Cloud Volumes ONTAP, los clústeres ONTAP locales o Amazon FSx para ONTAP.
@@ -25,10 +26,10 @@ Antes de poder replicar datos, debe confirmar que se cumplan los requisitos espe
 sistemas:: Si aún no lo ha hecho, debe crear los sistemas para el origen y el destino en la relación de replicación de datos.
 +
 --
-* https://docs.netapp.com/us-en/bluexp-fsx-ontap/start/task-getting-started-fsx.html["Cree un sistema Amazon FSx para ONTAP"^]
-* https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-overview-cvo.html["Crear un sistema Cloud Volumes ONTAP"^]
-* https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-adding-systems.html["Agregar sistemas Cloud Volumes ONTAP existentes"^]
-* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Descubra los clústeres de ONTAP"^]
+* https://docs.netapp.com/us-en/storage-management-fsx-ontap/start/task-getting-started-fsx.html["Cree un sistema Amazon FSx para ONTAP"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-overview-cvo.html["Crear un sistema Cloud Volumes ONTAP"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-adding-systems.html["Agregar sistemas Cloud Volumes ONTAP existentes"^]
+* https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-ontap.html["Descubra los clústeres de ONTAP"^]
 
 
 --
@@ -74,6 +75,7 @@ Requisitos específicos de Amazon FSx para ONTAP::
 
 
 
+[[step-2-replicate-data-between-systems]]
 == Paso 2: Replicar datos entre sistemas
 
 Puede replicar datos eligiendo una replicación de datos única, que puede ayudarlo a mover datos hacia y desde la nube, o una programación recurrente, que puede ayudar con la recuperación ante desastres o la retención a largo plazo.

@@ -16,8 +16,16 @@ summary: Después de configurar la replicación de datos entre dos sistemas, pue
 [role="lead"]
 Después de configurar la replicación de datos entre dos sistemas, puede administrar la programación y la relación de replicación de datos desde NetApp Replication.
 
+Las relaciones de replicación con sistemas de archivos FSx for ONTAP como origen o destino se gestionan en NetApp Workload Factory. Puedes gestionar estas relaciones desde la página de sistemas de la Console seleccionando el sistema de archivos FSx for ONTAP.
+
 .Pasos
 . link:task-login-replication.html["Inicie sesión en NetApp Replication"] .
++
+Pasa al paso 2 para gestionar las relaciones de replicación que no sean FSx para ONTAP.
+
++
+Para gestionar las relaciones de replicación con los sistemas de archivos FSx for ONTAP, después de iniciar sesión en la consola de NetApp, ve a *Almacenamiento* > *Gestión* > *Sistemas*. Luego selecciona el sistema de archivos FSx for ONTAP. Ahora estás en Workload Factory, en la pantalla de recursos de FSx for ONTAP. Selecciona la pestaña *Relaciones de replicación* para ver y gestionar las relaciones de replicación del sistema de archivos.
+
 . Revise el estado de las relaciones de replicación de datos para verificar que sean correctas.
 +
 

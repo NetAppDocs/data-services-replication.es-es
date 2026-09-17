@@ -18,6 +18,7 @@ A diferencia de las políticas de espejo, las políticas de respaldo (SnapVault)
 
 
 
+[[understanding-the-relationship-between-snapshot-copy-labels-and-backup-policies]]
 == Comprender la relación entre las etiquetas de copia de instantáneas y las políticas de respaldo
 
 Una política de instantáneas define cómo el sistema crea copias instantáneas de volúmenes.  La política especifica cuándo crear las copias instantáneas, cuántas copias conservar y cómo etiquetarlas.  Por ejemplo, un sistema podría crear una copia instantánea todos los días a las 12:10 a. m., conservar las dos copias más recientes y etiquetarlas como "diarias".
@@ -30,6 +31,7 @@ image:diagram_replication_snapvault_policy.png["Esta ilustración muestra una po
 
 
 
+[[default-policies-and-custom-policies]]
 == Políticas predeterminadas y políticas personalizadas
 
 La política de instantáneas predeterminada crea copias de instantáneas cada hora, cada día y cada semana, y conserva seis copias de instantáneas cada hora, dos diarias y dos semanales.

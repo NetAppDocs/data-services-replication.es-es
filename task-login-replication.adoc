@@ -16,7 +16,7 @@ summary: Utilice la NetApp Console para iniciar sesión en NetApp Replication.
 [role="lead"]
 Utilice la NetApp Console para iniciar sesión en NetApp Replication.
 
-Para iniciar sesión en la consola, puede usar sus credenciales del sitio de soporte de NetApp o puede registrarse para iniciar sesión en la nube de NetApp usando su correo electrónico y una contraseña. https://docs.netapp.com/us-en/bluexp-setup-admin/task-logging-in.html["Obtenga más información sobre cómo iniciar sesión"^] .
+Para iniciar sesión en la consola, puedes usar tus credenciales del sitio de soporte de NetApp o puedes registrarte para un inicio de sesión en la nube de NetApp usando tu correo electrónico y una contraseña. https://docs.netapp.com/us-en/console-setup-admin/task-logging-in.html["Obtenga más información sobre cómo iniciar sesión"^].
 
 .Pasos
 . Abra un navegador web y vaya a https://console.netapp.com/["NetApp Console"^] .
