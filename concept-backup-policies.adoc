@@ -27,7 +27,7 @@ Una política de respaldo incluye reglas que especifican qué copias de instant�
 
 Por ejemplo, una política de respaldo que incluye las etiquetas "diario" y "semanal" da como resultado la replicación de copias de instantáneas que incluyen solo esas etiquetas.  No se replican otras copias de instantáneas, como se muestra en la siguiente imagen:
 
-image:diagram_replication_snapvault_policy.png["Esta ilustración muestra una política de instantáneas, un volumen de origen, las copias de instantáneas creadas a partir de la política de instantáneas y luego la replicación de esas copias de instantáneas a un volumen de destino según una política de respaldo, que especifica la replicación de copias de instantáneas con las etiquetas \"diaria\" y \"semanal\""]
+image:diagram_replication_snapvault_policy.png["Una ilustración que muestra una política de snapshot, un volumen de origen, las copias de snapshot creadas a partir de la política de snapshot y luego la replicación de esas copias de snapshot a un volumen de destino según una política de backup, que especifica la replicación de las copias de snapshot con las etiquetas \"daily\" y \"weekly\""]
 
 
 

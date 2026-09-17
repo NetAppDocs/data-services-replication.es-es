@@ -29,7 +29,7 @@ Para gestionar las relaciones de replicación con los sistemas de archivos FSx f
 . Revise el estado de las relaciones de replicación de datos para verificar que sean correctas.
 +
 
-NOTE: Si el estado de una relación está inactivo y el estado del espejo no está inicializado, debe inicializar la relación desde el sistema de destino para que la replicación de datos se realice según el cronograma definido.  Puede inicializar la relación mediante el Administrador del sistema o la interfaz de línea de comandos (CLI).  Estos estados pueden aparecer cuando el sistema de destino falla y luego vuelve a estar en línea.
+NOTE: Si el estado de una relación es inactivo y el estado del espejo no está inicializado, debes inicializar la relación desde el sistema de destino para que la replicación de datos se produzca según la programación definida. Puedes inicializar la relación usando System Manager o la interfaz de línea de comandos (CLI). Estos estados pueden aparecer cuando el sistema de destino falla y luego vuelve a estar en línea.
 
 . Seleccione el menú de acciones para una relación de volumen y elija una de las acciones disponibles.
 +
@@ -69,7 +69,12 @@ Aprenda a realizar una resincronización inversa, que resincroniza los datos del
 | Actualizar | Inicia una transferencia incremental para actualizar el volumen de destino. 
 
 
-| Borrar | Elimina la relación de protección de datos entre los volúmenes de origen y destino, lo que significa que ya no se produce la replicación de datos entre los volúmenes.  Esta acción no activa el volumen de destino para el acceso a los datos. 
+| Borrar  a| 
+Elimina la relación de protección de datos entre los volúmenes de origen y de destino. Esto pone fin a la replicación de datos entre los volúmenes, elimina la relación de SnapMirror del sitio de destino y libera la relación del sitio de origen.
+
+
+NOTE: Al eliminar la relación, también se interrumpe la relación SnapMirror, lo que convierte temporalmente al volumen de destino en el sitio principal para las operaciones de lectura/escritura, con el fin de garantizar que el destino pueda utilizarse de forma independiente una vez eliminada la replicación.
+
 |===
 
 

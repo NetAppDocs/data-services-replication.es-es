@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-replicating-data.html 
 keywords: ontap, cluster, discover, manage, BlueXP, hybrid cloud, replication policy, policy, replication, replicating, snapmirror, snapvault, data replication, fanout, cascade, source, destination, schedule, relationship, max transfer, maximum transfer rate, rate, transfer rate, intercluster lif, replication requirement, requirements, disaster recovery, DR, archive, archiving, retention, amazon fsx for ontap, fsx for ontap 
-summary: Puede replicar datos entre sistemas ONTAP eligiendo una replicación de datos única para la transferencia de datos o una programación recurrente para la recuperación ante desastres o la retención a largo plazo.  Por ejemplo, puede configurar la replicación de datos desde un sistema ONTAP local a Cloud Volumes ONTAP para la recuperación ante desastres. 
+summary: Puedes replicar datos entre sistemas ONTAP eligiendo una replicación de datos puntual para la transferencia de datos o una programación periódica para la recuperación ante desastres o la retención a largo plazo. Por ejemplo, puedes configurar la replicación de datos desde un sistema ONTAP local a Cloud Volumes ONTAP para la recuperación ante desastres. 
 ---
 = Configurar la replicación de datos en NetApp Replication
 :hardbreaks:
@@ -21,7 +21,7 @@ Con NetApp Replication, replique datos entre sistemas ONTAP eligiendo una replic
 [[step-1-review-data-replication-requirements]]
 == Paso 1: Revisar los requisitos de replicación de datos
 
-Antes de poder replicar datos, debe confirmar que se cumplan los requisitos específicos para Cloud Volumes ONTAP, los clústeres ONTAP locales o Amazon FSx para ONTAP.
+Antes de poder replicar datos, debes comprobar que se cumplen los requisitos específicos para Cloud Volumes ONTAP, los clústeres ONTAP locales o Amazon FSx for ONTAP.
 
 sistemas:: Si aún no lo ha hecho, debe crear los sistemas para el origen y el destino en la relación de replicación de datos.
 +
@@ -67,7 +67,7 @@ Requisitos específicos de Amazon FSx para ONTAP::
 +
 --
 * Si Cloud Volumes ONTAP es parte de la relación, garantice la conectividad entre VPC habilitando el emparejamiento de VPC o utilizando un Transit Gateway.
-* Si un clúster ONTAP local es parte de la relación, asegúrese de la conectividad entre su red local y la VPC de AWS mediante una conexión directa o VPN.
+* Si un clúster de ONTAP local forma parte de la relación, asegúrate de que haya conectividad entre tu red local y la VPC de AWS usando una conexión Direct Connect o VPN.
 
 
 --
@@ -84,7 +84,7 @@ Puede replicar datos eligiendo una replicación de datos única, que puede ayuda
 . Desde el menú de navegación, seleccione *Almacenamiento > Administración*.
 . En la página Sistemas, seleccione el sistema que contiene el volumen de origen, arrástrelo al sistema en el que desea replicar el volumen y luego seleccione *Replicación*.
 +
-Los pasos restantes proporcionan un ejemplo de cómo crear una relación de sincronización entre Cloud Volumes ONTAP o clústeres ONTAP locales.
+Los pasos siguientes ofrecen un ejemplo de cómo crear una relación de sincronización entre Cloud Volumes ONTAP o clústeres de ONTAP locales.
 
 . *Configuración de peering de origen y destino*: si aparece esta página, seleccione todos los LIF entre clústeres para la relación de peering del clúster.
 +

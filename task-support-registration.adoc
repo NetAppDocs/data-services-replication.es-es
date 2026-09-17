@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task-support-registration.html 
-keywords: support registration, register for support, support, nss account, add nss account, 
+keywords: support registration, register for support, support, nss account, add nss account 
 summary: Antes de que puedas abrir un caso de soporte con el soporte técnico de NetApp, necesitas añadir una cuenta de NetApp Support Site a tu cuenta de Console y luego registrarte para soporte. 
 ---
 = Regístrese para recibir asistencia

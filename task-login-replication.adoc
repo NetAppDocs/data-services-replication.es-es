@@ -20,9 +20,6 @@ Para iniciar sesión en la consola, puedes usar tus credenciales del sitio de so
 
 .Pasos
 . Abra un navegador web y vaya a https://console.netapp.com/["NetApp Console"^] .
-+
-Aparece la página de inicio de sesión de la NetApp Console .
-
 . Inicie sesión en la consola.
 . Desde la navegación izquierda de la Consola, seleccione *Protección* > *Replicación*.
 

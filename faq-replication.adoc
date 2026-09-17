@@ -1,0 +1,104 @@
+---
+sidebar: sidebar 
+permalink: faq-replication.html 
+keywords: faq, frequently asked questions, snapmirror, snapvault, replication policies, backup policies, data protection, cloud volumes ontap, amazon fsx, ontap, mirror, backup, cascade, fanout 
+summary: Consulta las preguntas frecuentes sobre NetApp Replication, incluidas las configuraciones compatibles y cómo resolver los problemas más comunes. 
+---
+= Preguntas frecuentes sobre NetApp Replication
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Esta sección de preguntas frecuentes responde a las dudas más habituales sobre NetApp Replication. Se centra en conceptos, terminología y comportamientos que resultan útiles a la hora de configurar, gestionar y resolver problemas en las relaciones de replicación entre sistemas ONTAP, Cloud Volumes ONTAP y Amazon FSx for ONTAP.
+
+
+
+[[general-concepts]]
+== Conceptos generales
+
+.¿Qué combinaciones de sistemas de origen y de destino admite NetApp Replication?
+La replicación es compatible con Amazon FSx for ONTAP, Cloud Volumes ONTAP y ONTAP local. Puedes configurar la replicación entre cualquiera de estos tres sistemas.
+
+.¿Qué configuraciones de protección de datos admite Replication?
+La replicación admite tres configuraciones:
+
+* *Sencillo*: la replicación ocurre del volumen A al volumen B.
+* *Fanout*: la replicación se realiza desde el volumen A a varios destinos.
+* *Cascada*: la replicación se produce del volumen A al volumen B y, a continuación, del volumen B al volumen C.
+
+
+.¿Qué sucede durante la primera transferencia de replicación frente a las transferencias posteriores?
+La transferencia completa incluye una copia completa de los datos de origen. Las transferencias posteriores contienen únicamente copias diferenciales (incrementales) de los datos de origen.
+
+.¿La replicación tiene algún coste para usarla?
+NetApp no te cobra por usar Replication en sí, pero deberías consultar con tu proveedor de nube los cargos aplicables por la entrada y salida de datos. La NetApp Console genera cargos cuando implementas agentes de Console para conectarte a tus sistemas de almacenamiento o servicios de datos; algunos otros servicios de datos de NetApp accesibles desde la Console tienen licencia o requieren suscripción.
+
+.¿Necesito una licencia o suscripción para utilizar Replication?
+No necesitas una licencia ni una suscripción para empezar a utilizar la NetApp Console o NetApp Replication. Para las configuraciones de ONTAP locales, debe estar instalada una licencia activa de SnapMirror.
+
+
+
+[[replication-policies]]
+== Políticas de replicación
+
+.¿Cuál es la diferencia entre una política de Mirror y una política de backup?
+Hay tres tipos de políticas de replicación:
+
+* *Espejo*: replica las copias de instantáneas recién creadas en un volumen de destino, útil para prepararte para la recuperación ante desastres o para una replicación puntual de datos; puedes activar el volumen de destino para acceder a los datos en cualquier momento.
+* *Backup*: replica copias de instantáneas etiquetadas de forma específica en un volumen de destino y, por lo general, las conserva durante más tiempo que en el volumen de origen, útil para restaurar datos dañados o perdidos y para fines de cumplimiento normativo y gobernanza.
+* *Duplicación y copia de seguridad*: combina la recuperación ante desastres y la conservación a largo plazo, y es la política predeterminada incluida en cada sistema.
+
+
+Si las políticas predeterminadas no se ajustan a tus necesidades, puedes crear políticas personalizadas mediante System Manager.
+
+.¿Por qué mi política de backup no está replicando ninguna copia de snapshot?
+Una política de backup solo replica las copias de instantáneas cuyas etiquetas coinciden con las etiquetas definidas en la política de instantáneas del volumen de origen. Si las etiquetas de tu política de backup personalizada no coinciden con ninguna etiqueta en la política de instantáneas, el sistema no puede replicar ninguna copia de instantánea. Por ejemplo, una política de backup con las etiquetas "daily" y "weekly" solo replica copias de instantáneas con esas etiquetas.
+
+.¿Cuáles son los parámetros predeterminados de retención de instantáneas si utilizas las políticas predeterminadas?
+La política de instantáneas predeterminada crea copias de instantáneas cada hora, cada día y cada semana, y conserva seis copias horarias, dos diarias y dos semanales. Las políticas de backup predeterminadas replican copias de instantáneas diarias y semanales; conservan 7 copias diarias y 52 semanales.
+
+
+
+[[setting-up-replication]]
+== Configuración de la replicación
+
+.¿Qué debo comprobar antes de configurar la replicación de datos?
+Antes de replicar datos, comprueba lo siguiente:
+
+* Los sistemas de origen y destino ya existen (o créalos).
+* Comprueba que los volúmenes de origen y destino tengan versiones compatibles de ONTAP; consulta link:https://docs.netapp.com/us-en/ontap/data-protection/compatible-ontap-versions-snapmirror-concept.html["Versiones compatibles de ONTAP"^].
+* Asegúrate de que cumples los requisitos específicos del sistema para link:task-replicating-data.html["requisitos de replicación de datos"].
+
+
+.¿Qué se necesita para que la relación de paridad entre clústeres funcione correctamente a través de las LIF entre clústeres?
+La red entre clústeres debe configurarse de modo que los clústeres homólogos tengan conectividad de malla completa por pares, lo que significa que cada par de clústeres en una relación de paridad entre clústeres tenga conectividad entre todas sus LIF entre clústeres. Esto se aplica cuando un clúster ONTAP con varias LIF es el origen o el destino.
+
+.¿Puedo crear una programación de replicación personalizada?
+Al configurar la replicación, hay varias programaciones predeterminadas disponibles. Si quieres una programación diferente, debes crear una nueva programación en el clúster de destino usando System Manager.
+
+
+
+[[managing-replication-relationships]]
+== Gestión de las relaciones de replicación
+
+.¿Qué significa que una relación de replicación muestre un estado inactivo y un estado de espejo sin inicializar?
+Esto puede ocurrir cuando el sistema de destino falla y luego vuelve a estar en línea. Debes inicializar la relación desde el sistema de destino usando System Manager o la CLI para que la replicación de datos se reanude según la programación definida.
+
+.¿Cuál es la diferencia entre las acciones «break», «resync» y «reverse resync»?
+Estas acciones tienen diferentes efectos:
+
+* *Break*: rompe la relación entre los volúmenes de origen y de destino y activa el volumen de destino para el acceso a los datos. Normalmente se usa cuando el volumen de origen no puede proporcionar datos debido a daños, eliminación o porque está fuera de línea.
+* *Resincronizar*: restablece una relación interrumpida y reanuda la replicación según lo programado; el contenido del volumen de destino se sobrescribe con el contenido del volumen de origen.
+* *Resincronización inversa*: invierte los roles de los volúmenes de origen y destino, sobrescribiendo el contenido del volumen de origen original con el del volumen de destino. No se conservan los datos que se hayan escrito en el volumen de origen original entre la última replicación y cuando se desconectó.
+
+
+.¿Qué ocurre si elimino una relación de replicación?
+Al eliminar la relación de protección de datos entre los volúmenes de origen y de destino, se detiene la replicación de datos entre ambos volúmenes, se elimina la relación de SnapMirror del sitio de destino y se libera la relación del sitio de origen. También se rompe la relación de SnapMirror, convirtiendo temporalmente el volumen de destino en el sitio principal para operaciones de lectura/escritura, para que el destino pueda usarse de forma independiente después de eliminar la replicación.
+
+.¿Por qué debería limitar la tasa de transferencia máxima en lugar de dejarla sin límite?
+Una tasa de transferencia ilimitada podría tener un impacto negativo en el rendimiento de otras aplicaciones y en tu conexión a internet. Debes limitar la tasa máxima de transferencia (especificada en megabytes por segundo) al configurar la replicación, y puedes editarla más adelante desde la página Replication Status.
