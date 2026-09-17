@@ -23,9 +23,9 @@ NetApp SnapMirror replica datos a altas velocidades a través de LAN o WAN, de m
 
 Se puede acceder a NetApp Replication a través de la NetApp Console.
 
-La NetApp Console ofrece una gestión centralizada de los servicios de almacenamiento y datos de NetApp en entornos locales y en la nube a nivel de clase empresarial. La Console es necesaria para acceder y usar los servicios de datos de NetApp. Como interfaz de gestión, te permite gestionar muchos recursos de almacenamiento desde una sola interfaz. Los administradores de la Console pueden controlar el acceso al almacenamiento y a los servicios para todos los sistemas dentro de la empresa.
+La consola ofrece una gestión centralizada de los servicios de almacenamiento y datos de NetApp en entornos locales y en la nube, con un nivel de clase empresarial. La consola es necesaria para acceder y utilizar los servicios de datos de NetApp. Como interfaz de gestión, permite gestionar numerosos recursos de almacenamiento desde una única interfaz. Los administradores de la consola pueden controlar el acceso al almacenamiento y a los servicios de todos los sistemas de la empresa.
 
-No necesita una licencia o suscripción para comenzar a usar NetApp Console y solo incurre en cargos cuando necesita implementar agentes de Console en su nube para garantizar la conectividad con sus sistemas de almacenamiento o servicios de datos de NetApp . Sin embargo, algunos servicios de datos de NetApp accesibles desde la consola requieren licencia o suscripción.
+No necesitas ninguna licencia ni suscripción para empezar a utilizar la Consola. Solo incurres en cargos cuando necesitas implementar agentes de la Consola en tu nube para garantizar la conectividad con tus sistemas de almacenamiento o los servicios de datos de NetApp. Sin embargo, algunos servicios de datos de NetApp accesibles desde la Consola requieren licencia o suscripción.
 
 Obtén más información sobre el https://docs.netapp.com/us-en/console-setup-admin/concept-overview.html["NetApp Console"].
 
@@ -36,7 +36,7 @@ Obtén más información sobre el https://docs.netapp.com/us-en/console-setup-ad
 
 * Replique datos entre sistemas de almacenamiento ONTAP para respaldar la copia de seguridad y la recuperación ante desastres en la nube o entre nubes.
 * Garantice la confiabilidad de su entorno de DR con alta disponibilidad.
-* La replicación eficiente a nivel de bloques entre el almacenamiento ONTAP es rápida y eficiente, con puntos de recuperación granulares tanto para recuperación ante desastres como para respaldo.
+* La replicación eficiente a nivel de bloque entre sistemas de almacenamiento ONTAP es rápida y eficaz, con puntos de recuperación granulares tanto para la recuperación ante desastres como para el backup.
 
 
 
@@ -86,7 +86,7 @@ NetApp Replication permite la replicación de datos entre los siguientes tipos d
 [[how-data-replication-works]]
 == Cómo funciona la replicación de datos
 
-NetApp Replication simplifica la replicación de datos entre volúmenes en sistemas ONTAP separados utilizando las tecnologías SnapMirror y SnapVault .  Simplemente necesita identificar el volumen de origen y el volumen de destino y luego elegir una política y un programa de replicación.
+NetApp Replication simplifica la replicación de datos entre volúmenes en sistemas ONTAP independientes usando las tecnologías SnapMirror y SnapVault. Para configurar la replicación, solo tienes que identificar el volumen de origen y el volumen de destino, y luego elegir una política de replicación y una programación.
 
 Para Cloud Volumes ONTAP, NetApp Replication compra los discos necesarios, configura las relaciones, aplica la política de replicación y luego inicia la transferencia de referencia entre volúmenes.
 
@@ -110,13 +110,12 @@ NetApp Replication admite configuraciones de protección de datos simples, en ab
 [[replicate-data-using-netapp-backup-and-recovery]]
 == Replique datos utilizando NetApp Backup and Recovery
 
-A partir de la versión 3.9.31 del agente NetApp Console, NetApp Backup and Recovery te permite replicar datos entre volúmenes en sistemas ONTAP independientes usando las tecnologías SnapMirror y SnapVault. Así que si planeas replicar datos a otros sistemas ONTAP y también quieres crear copias de seguridad de esos mismos datos en almacenamiento de objetos, quizá quieras usar https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html["NetApp Backup and Recovery"^] para que puedas gestionar tus necesidades de protección de datos con un solo servicio.
+link:https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html["NetApp Backup and Recovery"^] te permite replicar datos entre volúmenes en sistemas ONTAP independientes y, al mismo tiempo, crear copias de seguridad de esos mismos datos en almacenamiento de objetos. Si quieres gestionar tanto la replicación como la protección de backup a objeto para los mismos datos de ONTAP en un solo servicio, considera usar NetApp Backup and Recovery.
 
-NetApp Backup and Recovery no admite la siguiente funcionalidad que está disponible en NetApp Replication:
+NetApp Replication admite las siguientes funciones que no están disponibles en Backup and Recovery.
 
-* No se admite una configuración en cascada donde la replicación se produce del volumen A al volumen B y luego del volumen B al volumen C.
-* No hay soporte para replicar datos hacia o desde FSx para sistemas ONTAP .
-* No hay soporte para crear una replicación única de un volumen.
+* Actualmente, NetApp Backup and Recovery no admite la replicación de datos hacia o desde sistemas FSx for ONTAP.
+* NetApp Backup and Recovery no permite crear una replicación puntual de un volumen.
 
 
-Entonces, si necesita alguna de estas funciones, utilice NetApp Replication.
+Además, las relaciones en cascada son más fáciles de configurar en Replication. Si necesitas alguna de estas funciones, utiliza NetApp Replication.
